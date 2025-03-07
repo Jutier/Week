@@ -28,10 +28,6 @@ Exemplo_Disciplinas = [
 
 
 
-
-
-
-
 def escreve(Campo, Texto, Centro, Fonte):
 	'''Escreve 'Texto' na linha 'Campo' centrado em 'Centro' com 'Fonte'.'''
 
@@ -81,4 +77,6 @@ def escreveAulas(Aulas, Arquivo):
 
 
 if __name__ == '__main__':
+	print('Este código deve ser importado.')
+	print('Executar ele salva um exemplo do uso. Pode ser adaptado para atender certas nescessidades.')
 	escreveAulas(Exemplo_Disciplinas, 'Exemplo')
