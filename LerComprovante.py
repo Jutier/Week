@@ -3,25 +3,28 @@ import re
 
 
 def lerPDF(PDFPath):
-	pag = pymupdf.open(PDFPath)[0]
-	#rawtext = pytesseract.image_to_string(img[0], lang='por')
-	return pag.get_text()
+	with pymupdf.open(PDFPath) as file:
+		pag = file[0]
+		txt = pag.get_text()
+	return txt
 
 def criaDict(rawtext):
 	Disciplinas = []
 
 	for linha in rawtext.split('\n'):
 
-		linhaNome = re.search(r"\([A-Z]{3}[0-9]{5}\)", linha)
-		linhaHora = re.search("[0-2][0-9]:[0-6][0-9]-[0-2][0-9]:[0-6][0-9]", linha)
-		linhaSala = re.search(r" [A-Z] ?[0-9]{3} ", linha)
+		linhaNome = re.search(r"\([A-Z]{3}[0-9]{5}\)", linha) # Encontra código: (ABC01234)
+		linhaHora = re.search("[0-2][0-9]:[0-6][0-9]-[0-2][0-9]:[0-6][0-9]", linha) # Encontra horário: 10:30-12:10
+		linhaSala = re.search(r" [A-Z] ?[0-9]{3} ", linha) # Encontra sala: A123
 
 		if linhaNome:
 			try:
+				# Essa é uma forma de garantir que uma disciplina só seja salva quando outra estiver para ser criada
+				# Parece idiota, mas resolve a inconsistencia e agrupa os horarios com facilidade
 				Disciplinas.append(disciplina)
-			except:
+			except UnboundLocalError:
 				pass
-			print(linha)
+
 			disciplina = {'Nome':' '.join(linha.split(' ')[:-2]).title(),'Sala': None, 'Horário':{}}
 	
 		if linhaHora:
@@ -30,6 +33,9 @@ def criaDict(rawtext):
 		if linhaSala:
 			disciplina['Sala'] = linhaSala.group().replace(' ', '')
 
-	Disciplinas.append(disciplina)
+	Disciplinas.append(disciplina) # Salva a ultima disciplina no final do arquivo
 
 	return Disciplinas
+
+if __name__ == "__main__":
+	print('Este código deve ser importado.')

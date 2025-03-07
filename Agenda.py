@@ -1,4 +1,4 @@
-import ComprovanteOCR as comp
+import LerComprovante as comp
 import CriaImagem as cria
 
 PDFPATH = r"Comprovante.pdf"
@@ -7,14 +7,15 @@ texto = comp.lerPDF(PDFPATH)
 disciplinas = comp.criaDict(texto)
 
 def confirma():
-	print('Suas disciplinas parecem ser:')
+	print('\nSuas disciplinas parecem ser:\n')
 	for disciplina in disciplinas:
 		print(disciplina)
-	entrada = input('Enter para confirmar, ou digite algo para alterar: ')
+	print('\nPara confirmar aperte "Enter", ou digite um campo para alterar.')
+	entrada = input('("nome", "sala", "horário"): ')
 	return entrada
 
 def escolha(campo):
-	print(f'Os campos "{campo}" são: ')
+	print(f'\nOs campos "{campo}" são: ')
 	for n, disciplina in enumerate(disciplinas):
 		print(f'{n}: {disciplina[campo]}')
 	print(f'{len(disciplinas)}: Para alterar mais de um.')
@@ -23,18 +24,20 @@ def escolha(campo):
 
 def alterar(campo, num):
 	try:
-		print(f'Alterando: {disciplinas[num][campo]}')
-		novo = input(f'Digite um novo "{campo}": ')
-		disciplinas[num][campo] = novo
+		print(f'\nAlterando: {disciplinas[num][campo]}')
+		novo = input(f'Digite um novo "{campo}" ("Enter" para manter): ').title()
+		if novo != '':
+			disciplinas[num][campo] = novo
 	except IndexError:
 		for n, disciplina in enumerate(disciplinas):
 			alterar(campo, n)
 
+if __name__ == '__main__':
+	campo = confirma().title()
+	while campo != '':
+		if campo.lower() in ("nome", "sala", "horário"):
+			num = escolha(campo)
+			alterar(campo, num)
+		campo = confirma().title()
 
-campo = confirma()
-while campo != '':
-	num = escolha(campo)
-	alterar(campo, num)
-	campo = confirma()
-
-cria.escreveAulas(disciplinas, 'Horário')
+	cria.escreveAulas(disciplinas, 'Horário')
