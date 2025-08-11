@@ -2,16 +2,16 @@ from PIL import Image, ImageFont, ImageDraw
 
 
 # Fonte para horas
-HFont = ImageFont.truetype('Fontes/Cousine/Cousine-Regular.ttf', size=46)
+HFont = ImageFont.truetype('Fontes/Manjari/Manjari-Bold.ttf', size=45)
 # Fonte para texto
-TFont = ImageFont.truetype('Fontes/Nanum_Gothic/NanumGothic-Bold.ttf', size=45)
+TFont = ImageFont.truetype('Fontes/Manjari/Manjari-Bold.ttf', size=45)
 
 # Valor de y para cada dia
-Y = {'Seg':[427+56*i for i in range(5)],
-	 'Ter':[731+56*i for i in range(5)],
-	 'Qua':[1034+56*i for i in range(5)],
-	 'Qui':[1338+56*i for i in range(5)],
-	 'Sex':[1641+56*i for i in range(5)]}
+Y = {'Seg':[436+56*i for i in range(5)],
+	 'Ter':[740+56*i for i in range(5)],
+	 'Qua':[1043+56*i for i in range(5)],
+	 'Qui':[1347+56*i for i in range(5)],
+	 'Sex':[1650+56*i for i in range(5)]}
 
 # Fundo padrão
 img = Image.open('Fundo base/Planner.png')
