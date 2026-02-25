@@ -1,0 +1,213 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+  }
+  
+  body {
+	font-family: 'Segoe UI', sans-serif;
+	background-color: #121212;
+	color: #e0e0e0;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 20px;
+  }
+  
+  .main-content {
+	display: flex;
+	gap: 40px;
+	width: 100%;
+	max-width: 1400px;
+  }
+  
+  /* Left side (inputs) */
+  .content-left {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+  }
+  
+  /* Upload com status lado a lado */
+  .upload-section {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px;
+	background-color: #1e1e1e;
+	border-radius: 12px;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+  
+  .upload-section input[type="file"] {
+	padding: 8px;
+	border-radius: 6px;
+	border: none;
+	background-color: #2a2a2a;
+	color: #e0e0e0;
+	cursor: pointer;
+  }
+  
+  .upload-section input[type="file"]::file-selector-button {
+	background-color: #3a3a3a;
+	border: none;
+	padding: 6px 12px;
+	border-radius: 6px;
+	color: #e0e0e0;
+	cursor: pointer;
+	transition: background 0.2s;
+  }
+  
+  .upload-section input[type="file"]::file-selector-button:hover {
+	background-color: #505050;
+  }
+  
+  #status {
+	font-size: 0.9rem;
+	color: #4a9eff;
+  }
+  
+  /* Result / disciplines */
+  #result {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+  }
+  
+  /* Botões de gerar e download */
+  #result button {
+	padding: 8px 16px;       /* menor que antes */
+	border-radius: 8px;
+	border: none;
+	background-color: #3a3a3a;
+	color: #e0e0e0;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background 0.2s;
+	width: auto;             /* não ocupa toda a coluna */
+	margin-top: 10px;        /* separação do elemento acima */
+  }
+  
+  #result button:hover {
+	background-color: #505050;
+  }
+  
+  /* Lista de disciplinas expandida */
+  .disciplines-list {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding: 10px;
+	background-color: #1e1e1e;
+	border-radius: 12px;
+	max-height: none;
+  }
+  
+  .discipline {
+	padding: 8px 10px;  /* mais compacto */
+	background-color: #2a2a2a;
+	border-left: 3px solid #4a9eff;
+	border-radius: 4px;
+	font-size: 14px;
+  }
+  
+  .discipline-info {
+	display: flex;
+	gap: 10px;        /* reduz o espaço entre nome e sala */
+  }
+  
+  .discipline-info .nome { flex: 7; }
+  .discipline-info .sala { flex: 3; }
+  
+  .discipline-info label {
+	display: flex;
+	align-items: center;
+	gap: 5px;          /* menos espaço */
+  }
+  
+  .discipline-info input {
+	flex: 1;
+	padding: 4px 6px;  /* reduz padding */
+	background: #444;
+	border: 1px solid #555;
+	color: #fff;
+	border-radius: 4px;
+  }
+  
+  /* Horários */
+  .discipline-horarios {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+  }
+  
+  .horario-item {
+	flex: 1;
+	min-width: 80px;
+  }
+  
+  .horario-item label {
+	display: flex;
+	flex-direction: column;
+	font-size: 12px;
+	gap: 3px;
+  }
+  
+  .horario-item input {
+	padding: 4px 6px;
+	background: #444;
+	border: 1px solid #555;
+	color: #fff;
+	border-radius: 4px;
+  }
+  
+  /* Right side (canvas) */
+  .content-right {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	align-items: center;
+  }
+  
+  #result-canvas {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	align-items: center;
+  }
+  
+  /* Canvas maior, altura 85% da viewport */
+  #canvas {
+	border: 1px solid #444;
+	border-radius: 12px;
+	max-width: 100%;
+	max-height: 85vh;
+	height: auto;
+	background-color: #1a1a1a;
+  }
+  
+  /* Botão download separado e menor */
+  #downloadBtn {
+	padding: 8px 16px;
+	border-radius: 8px;
+	border: none;
+	background-color: #3a3a3a;
+	color: #e0e0e0;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background 0.2s;
+	width: auto;
+	margin-top: 10px;  /* separa do canvas */
+  }
+  
+  #downloadBtn:hover {
+	background-color: #505050;
+  }
+  
+  /* Hidden class */
+  .hidden {
+	display: none;
+  }

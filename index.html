@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Week</title>
+		<style>
+			@font-face {
+				font-family: 'Manjari';
+				src: url('./Fontes/Manjari/Manjari-Bold.ttf') format('truetype');
+				font-weight: bold;
+			}
+		</style>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="main-content">
+			<div class="content-left">
+				<div class="upload-section">
+					<input type="file" id="pdfInput" accept="application/pdf" />
+					<p id="status"></p>
+				</div>
+
+				<div id="result" class="hidden">
+					<div id="disciplines" class="disciplines-list"></div>
+					<button id="generateBtn">Gerar Imagem</button>
+				</div>
+			</div>
+
+			<div class="content-right">
+				<div id="result-canvas" class="hidden">
+					<canvas id="canvas"></canvas>
+					<button id="downloadBtn">Baixar</button>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+		<script src="script.js"></script>
+	</body>
+</html>
